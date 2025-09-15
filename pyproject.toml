@@ -22,8 +22,8 @@ app = { path = "src/app" }
 packages = ["src/app"]
 
 [project.scripts]
- dev-console = "app.agent.scripts:dev_console"
- dev-mode = "app.agent.scripts:dev_mode"
+ agent-console = "app.agent.scripts:dev_console"
+ agent-dev = "app.agent.scripts:dev_mode"
  lint = "ruff format ruff check --fix"
 
 [build-system]

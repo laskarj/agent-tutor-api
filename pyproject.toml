@@ -7,11 +7,62 @@ authors = [
     { name = "Eduard Laskarzhevskyi", email = "eduard.laskarzhevskyi@nixs.com" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "adaptix>=3.0.0b11",
+    "fastapi[standard]>=0.116.1",
+    "livekit-agents[elevenlabs,openai,silero,turn-detector]>=1.2.8",
+    "livekit-api>=1.0.5",
+    "livekit-plugins-noise-cancellation>=0.2.5",
+]
+
+[tool.uv.sources]
+app = { path = "src/app" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app"]
 
 [project.scripts]
-agent-tutor-api = "agent_tutor_api:main"
+ dev-console = "app.agent.scripts:dev_console"
+ dev-mode = "app.agent.scripts:dev_mode"
+ lint = "ruff format ruff check --fix"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.13.0",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = [
+    "E",   # Pycodestyle Errors
+    "W",   # Pycodestyle Warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear (bug hunting)
+    "C90", # mccabe (code complexity)
+    "SIM", # flake8-simplify (code simplification)
+    "T20", # flake8-print
+    "RUF", # Specific rules for Ruff
+]
+pydocstyle.convention = 'google'
+
+[tool.ruff.lint.isort]
+known-local-folder = ["tests", "src/app"]
+split-on-trailing-comma = true
+combine-as-imports = true
+case-sensitive = true
+detect-same-package = true
+order-by-type = false
+force-sort-within-sections = true

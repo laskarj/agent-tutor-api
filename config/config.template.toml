@@ -1,0 +1,9 @@
+[providers]
+[providers.openapi]
+secret_key = "*****"
+
+
+[providers.livekit]
+ws_url = "ws://127.0.0.1:7881"
+api_key = "devkey"
+secret_key = "secret"

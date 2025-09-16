@@ -13,6 +13,7 @@ dependencies = [
     "livekit-agents[elevenlabs,openai,silero,turn-detector]>=1.2.8",
     "livekit-api>=1.0.5",
     "livekit-plugins-noise-cancellation>=0.2.5",
+    "uvicorn[standard]>=0.35.0",
 ]
 
 [tool.uv.sources]
@@ -24,6 +25,7 @@ packages = ["src/app"]
 [project.scripts]
  agent-console = "app.agent.scripts:dev_console"
  agent-dev = "app.agent.scripts:dev_mode"
+ api-dev = "app.api.run:dev"
 
 [build-system]
 requires = ["hatchling"]

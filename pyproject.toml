@@ -57,6 +57,7 @@ select = [
     "T20", # flake8-print
     "RUF", # Specific rules for Ruff
 ]
+ignore = ["B008"]
 pydocstyle.convention = 'google'
 
 [tool.ruff.lint.isort]

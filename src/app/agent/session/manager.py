@@ -1,4 +1,4 @@
-from livekit.agents import AgentSession, RoomInputOptions, metrics
+from livekit.agents import AgentSession, RoomInputOptions, metrics, JobContext
 
 from app.agent.assistant.agent import Assistant
 from app.agent.session.config import SessionConfig
@@ -11,7 +11,7 @@ logger = get_logger("agent.session")
 class SessionManager:
     """Manages agent session lifecycle."""
 
-    def __init__(self, ctx):
+    def __init__(self, ctx: JobContext) -> None:
         self.ctx = ctx
         self.usage_collector = metrics.UsageCollector()
         self.session = None
@@ -25,7 +25,7 @@ class SessionManager:
             stt=config.get_stt_config(),
             tts=config.get_tts_config(),
             turn_detection=config.get_turn_detection_config(),
-            vad=vad,
+            vad=config.load_vad,
             preemptive_generation=config.get_preemptive_generation(),
         )
 

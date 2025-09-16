@@ -1,4 +1,5 @@
-from livekit.plugins import openai
+from livekit import agents
+from livekit.plugins import openai, silero
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 from app.shared.config import load_config
@@ -37,3 +38,8 @@ class SessionConfig:
     @staticmethod
     def get_preemptive_generation():
         return True
+
+    @staticmethod
+    def load_vad() -> agents.vad.VAD:
+        return silero.VAD.load()
+

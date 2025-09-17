@@ -17,7 +17,7 @@ class SessionManager:
         self.session = None
         self.handlers = None
 
-    async def create_session(self, vad):
+    async def create_session(self):
         config = SessionConfig()
 
         self.session = AgentSession(
@@ -25,7 +25,7 @@ class SessionManager:
             stt=config.get_stt_config(),
             tts=config.get_tts_config(),
             turn_detection=config.get_turn_detection_config(),
-            vad=config.load_vad,
+            vad=config.load_vad(),
             preemptive_generation=config.get_preemptive_generation(),
         )
 

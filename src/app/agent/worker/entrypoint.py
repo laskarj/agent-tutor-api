@@ -15,8 +15,7 @@ class EntrypointHandler:
         logger.info(f"Starting agent session for room: {ctx.room.name}")
 
         session_manager = SessionManager(ctx)
-        vad = ctx.proc.userdata["vad"]
-        await session_manager.create_session(vad)
+        await session_manager.create_session()
         await session_manager.start_session()
         await ctx.connect()
 

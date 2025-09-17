@@ -11,7 +11,10 @@ class LivekitConfig:
 @dataclass(frozen=True)
 class OpenAPIConfig:
     secret_key: str
-
+    llm_model: str
+    tts_voice: str
+    sst_model: str
+    sst_lang: str
 
 @dataclass(frozen=True)
 class ProvidersConfig:

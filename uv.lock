@@ -21,6 +21,7 @@ dependencies = [
     { name = "livekit-agents", extra = ["elevenlabs", "openai", "silero", "turn-detector"] },
     { name = "livekit-api" },
     { name = "livekit-plugins-noise-cancellation" },
+    { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.dev-dependencies]
@@ -35,6 +36,7 @@ requires-dist = [
     { name = "livekit-agents", extras = ["elevenlabs", "openai", "silero", "turn-detector"], specifier = ">=1.2.8" },
     { name = "livekit-api", specifier = ">=1.0.5" },
     { name = "livekit-plugins-noise-cancellation", specifier = ">=0.2.5" },
+    { name = "uvicorn", extras = ["standard"], specifier = ">=0.35.0" },
 ]
 
 [package.metadata.requires-dev]
